@@ -1,8 +1,18 @@
 from ast import arg, operator
 from msilib.schema import Error
 from unittest import result
+import mysql.connector
 
-def executeCommand(command, args):
+db = mysql.connector.connect(
+    host="localhost",
+    user="saketh",  # the user you set when installing MySQL
+    passwd="S$Den123",  # ,  # the password you set when installing MySQL
+    database="traveldb" # only run this line after running the database creation command below
+)
+mycursor = db.cursor()
+
+
+def customQueries(command, args):
     if command == "SHOW":
         if len(args) == 0 or args[0] == "STUDENTS":
             getStudentInfo()
@@ -18,7 +28,6 @@ def executeCommand(command, args):
     else:
         print("*Error*: Unknown/Unsupported command")
 
-@app.route("/getAll")
 def getStudentInfo():
     operation = (f"SELECT S.caseID, S.name, AVG(S.year) FROM Student S WHERE S.turnedInPaperwork = true GROUP BY S.caseID")
     try:
