@@ -1,4 +1,5 @@
 from ast import arg, operator
+import mailbox
 from msilib.schema import Error
 from unittest import result
 import mysql.connector
@@ -11,8 +12,9 @@ db = mysql.connector.connect(
 )
 mycursor = db.cursor()
 
+from setuptools import Command
 
-def customQueries(command, args):
+def executeCommand(command, args):
     if command == "SHOW":
         if len(args) == 0 or args[0] == "STUDENTS":
             getStudentInfo()
@@ -29,7 +31,17 @@ def customQueries(command, args):
         print("*Error*: Unknown/Unsupported command")
 
 def getStudentInfo():
-    operation = (f"SELECT S.caseID, S.name, AVG(S.year) FROM Student S WHERE S.turnedInPaperwork = true GROUP BY S.caseID")
+    # operation = (f"SELECT S.caseID, S.name, AVG(S.year) FROM Student S WHERE S.turnedInPaperwork = true GROUP BY S.caseID")
+    # try:
+    #     mycursor.execute(operation)
+    #     result = mycursor.fetchall()
+    #     print(result)
+    # except Error as e:
+    #     print(f"The error '{e}' occured")
+    print("get students goes here")
+
+def getClubs():
+    operation = (f"SELECT S.caseID, S.name, C.capacity, C.plateNum, E.capacity, COUNT(S.name) FROM Student S, Car C, Event E WHERE E.eventID = C.eventID AND S.caseID = C.driverID GROUP BY S.caseID")
     try:
         mycursor.execute(operation)
         result = mycursor.fetchall()
@@ -37,10 +49,21 @@ def getStudentInfo():
     except Error as e:
         print(f"The error '{e}' occured")
 
-def getClubs():
-    return 0
-
 def getStudentsDriving():
-    return 0
+    operation = (f"SELECT Cl.clubID, Cl.name, Cl.funds From Clubs Cl WHERE Cl.funds > 100")
+    try:
+        mycursor.execute(operation)
+        result = mycursor.fetchall()
+        print(result)
+    except Error as e:
+        print(f"The error '{e}' occured")
 
 
+def main():
+    command = input()
+    args = input()
+    print(command)
+    executeCommand(command, args)
+
+if(__name__ == "__main__"):
+    main()
