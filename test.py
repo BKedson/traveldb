@@ -59,28 +59,28 @@ mycursor = db.cursor()
 # creates a table in the db
 
 # # creates the Student table
-# mycursor.execute(
-#      "CREATE TABLE Student (caseID VARCHAR(6) PRIMARY KEY, name VARCHAR(50), year int UNSIGNED, address VARCHAR(100), phone varchar(50), email varchar(50), turnedInPaperwork BOOLEAN)")
+mycursor.execute(
+      "CREATE TABLE Student (caseID VARCHAR(6) PRIMARY KEY, name VARCHAR(50), year int UNSIGNED, address VARCHAR(100), phone varchar(50), email varchar(50), turnedInPaperwork BOOLEAN)")
 
 # # # creates the Event table
-# mycursor.execute(
-#      "CREATE TABLE Event (eventID int PRIMARY KEY AUTO_INCREMENT, eventName VARCHAR(50), eventLocation VARCHAR(100), startDate DATE, endDate DATE, capacity int, cost float)")
+mycursor.execute(
+      "CREATE TABLE Event (eventID int PRIMARY KEY AUTO_INCREMENT, eventName VARCHAR(50), eventLocation VARCHAR(100), startDate DATE, endDate DATE, capacity int, cost float)")
 
 # # # creates the Club table
-# mycursor.execute(
-#     "CREATE TABLE Club (clubID int PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50), funds float, presID VARCHAR(6), sponsorName VARCHAR(50))")
+mycursor.execute(
+     "CREATE TABLE Club (clubID int PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50), funds float, presID VARCHAR(6), sponsorName VARCHAR(50))")
 
 # # # creates the carGoes table
-# mycursor.execute(
-#      "CREATE TABLE carGoes (plateNum VARCHAR(10) PRIMARY KEY, make VARCHAR(25), model VARCHAR(50), capacity int, eventID int, FOREIGN KEY (eventID) REFERENCES Event(eventID))")
+mycursor.execute(
+     "CREATE TABLE carGoes (plateNum VARCHAR(10) PRIMARY KEY, make VARCHAR(25), model VARCHAR(50), capacity int, eventID int, FOREIGN KEY (eventID) REFERENCES Event(eventID))")
 
 # # # creates the isDriver table
-# mycursor.execute(
-#      "CREATE TABLE isDriver (caseID VARCHAR(6), plateNum VARCHAR(10), eventID int, FOREIGN KEY (eventID) REFERENCES Event(eventID), FOREIGN KEY (caseID) REFERENCES Student(caseID), FOREIGN KEY (plateNum) REFERENCES carGoes(plateNum))")
+mycursor.execute(
+     "CREATE TABLE isDriver (caseID VARCHAR(6), plateNum VARCHAR(10), eventID int, FOREIGN KEY (eventID) REFERENCES Event(eventID), FOREIGN KEY (caseID) REFERENCES Student(caseID), FOREIGN KEY (plateNum) REFERENCES carGoes(plateNum))")
 
 # # # creates the isOwner table
-# mycursor.execute(
-#      "CREATE TABLE isOwner (caseID VARCHAR(6), plateNum VARCHAR(10), eventID int, FOREIGN KEY (eventID) REFERENCES Event(eventID), FOREIGN KEY (caseID) REFERENCES Student(caseID), FOREIGN KEY (plateNum) REFERENCES carGoes(plateNum))")
+mycursor.execute(
+     "CREATE TABLE isOwner (caseID VARCHAR(6), plateNum VARCHAR(10), eventID int, FOREIGN KEY (eventID) REFERENCES Event(eventID), FOREIGN KEY (caseID) REFERENCES Student(caseID), FOREIGN KEY (plateNum) REFERENCES carGoes(plateNum))")
 
 # # # creates the isRiding table
 # mycursor.execute(
