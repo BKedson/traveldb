@@ -17,7 +17,7 @@ mycursor = db.cursor()
 
 # this is the sample data for the Student table
 # mycursor.execute(
-# "INSERT INTO Student(caseID,name,year,address,phone,email,turnedInPaperwork) VALUES('gwk12','Ginger Mckay',1,'952-112 Volutpat Road','(336) 254-6125','ac.ipsum@yahoo.net',0),('lzp22','Lyle Padilla',2,'Ap #881-4919 Vivamus Street','(947) 361-7372','elit@aol.ca',0),('hlh333','Halee Holt',3,'903-1257 Luctus Rd.','(321) 660-3525','massa.vestibulum@yahoo.com',0),('cpr45','Charissa Randall',4,'Ap #484-9603 Ornare. St.','(648) 905-3225','vitae.erat.vel@aol.net',0),('dos521','Diana Suarez',5,'P.O. Box 374, 9001 Luctus Rd.','(320) 345-6711','dignissim.lacus.aliquam@aol.com',1),('bkm691','Bert Mayer',1,'P.O. Box 532, 316 Et St.','1-339-324-3860','justo@protonmail.com',1),('mdf7','Maris Frederick',2,'Ap #281-1372 Et Road','1-898-937-8067','nullam.velit@outlook.edu',0),('zym89','Zachary Malone',3,'773-2239 Duis Ave','(853) 894-5703','sapien@aol.net',1),('quw91','Quyn Walters',4,'Ap #272-4995 Proin Street','1-978-224-4974','eu@hotmail.org',1),('qok10','Quentin Kline',5,'Ap #721-9119 Nibh Ave','1-275-895-6527','nec@icloud.com',1),('waa113','Warren Adkins',1,'Ap #232-1184 Ac Street','(601) 361-3574','ac.ipsum@google.net',1),('mcs101','Merritt Santiago',2,'438 Mus. St.','(235) 787-7831','nunc.ullamcorper@google.ca',1),('aoh131','Alexis Hinton',3,'Ap #727-111 Id, Rd.','(453) 231-4875','condimentum@outlook.org',1),('sph147','Sybil Holder',4,'P.O. Box 268, 1499 Cursus Av.','(132) 813-8282','tristique.pharetra@hotmail.org',0),('oir159','Odysseus Rosa',5,'170-223 Nulla. Rd.','1-371-673-5462','ultrices.vivamus.rhoncus@yahoo.ca',1);")
+# "INSERT INTO Student(caseID,name,year,address,phone,email) VALUES('gwk12','Ginger Mckay',1,'952-112 Volutpat Road','(336) 254-6125','ac.ipsum@yahoo.net'),('lzp22','Lyle Padilla',2,'Ap #881-4919 Vivamus Street','(947) 361-7372','elit@aol.ca'),('hlh333','Halee Holt',3,'903-1257 Luctus Rd.','(321) 660-3525','massa.vestibulum@yahoo.com'),('cpr45','Charissa Randall',4,'Ap #484-9603 Ornare. St.','(648) 905-3225','vitae.erat.vel@aol.net'),('dos521','Diana Suarez',5,'P.O. Box 374, 9001 Luctus Rd.','(320) 345-6711','dignissim.lacus.aliquam@aol.com'),('bkm691','Bert Mayer',1,'P.O. Box 532, 316 Et St.','1-339-324-3860','justo@protonmail.com'),('mdf7','Maris Frederick',2,'Ap #281-1372 Et Road','1-898-937-8067','nullam.velit@outlook.edu'),('zym89','Zachary Malone',3,'773-2239 Duis Ave','(853) 894-5703','sapien@aol.net'),('quw91','Quyn Walters',4,'Ap #272-4995 Proin Street','1-978-224-4974','eu@hotmail.org'),('qok10','Quentin Kline',5,'Ap #721-9119 Nibh Ave','1-275-895-6527','nec@icloud.com'),('waa113','Warren Adkins',1,'Ap #232-1184 Ac Street','(601) 361-3574','ac.ipsum@google.net'),('mcs101','Merritt Santiago',2,'438 Mus. St.','(235) 787-7831','nunc.ullamcorper@google.ca'),('aoh131','Alexis Hinton',3,'Ap #727-111 Id, Rd.','(453) 231-4875','condimentum@outlook.org'),('sph147','Sybil Holder',4,'P.O. Box 268, 1499 Cursus Av.','(132) 813-8282','tristique.pharetra@hotmail.org'),('oir159','Odysseus Rosa',5,'170-223 Nulla. Rd.','1-371-673-5462','ultrices.vivamus.rhoncus@yahoo.ca');")
 
 # this is the sample data for the event table
 # mycursor.execute(
@@ -45,7 +45,7 @@ mycursor = db.cursor()
 
 # creates the sample data for the isGoing table
 # mycursor.execute(
-#     "INSERT INTO isGoing VALUES('gwk12',1), ('gwk12',5),('lzp22',3),('hlh333', 3),('cpr45',5),('dos521',4),('bkm691',1),('mdf7',4),('zym89',5),('quw91',3),('qok10',5),('waa113',1),('mcs101',4),('aoh131',1),('sph147',4),('oir159',3);")
+#     "INSERT INTO isGoing VALUES('gwk12',1,0), ('gwk12',5,1),('lzp22',3,0),('hlh333', 3,0),('cpr45',5,1),('dos521',4,1),('bkm691',1,0),('mdf7',4,0),('zym89',5,1),('quw91',3,0),('qok10',5,1),('waa113',1,0),('mcs101',4,0),('aoh131',1,1),('sph147',4,1),('oir159',3,1);")
 
 # creates the sample data for the isParticipating table
 # mycursor.execute(
@@ -60,7 +60,7 @@ mycursor = db.cursor()
 
 # # creates the Student table
 # mycursor.execute(
-#      "CREATE TABLE Student (caseID VARCHAR(6) PRIMARY KEY, name VARCHAR(50), year int UNSIGNED, address VARCHAR(100), phone varchar(50), email varchar(50), turnedInPaperwork BOOLEAN)")
+#      "CREATE TABLE Student (caseID VARCHAR(6) PRIMARY KEY, name VARCHAR(50), year int UNSIGNED, address VARCHAR(100), phone varchar(50), email varchar(50))")
 
 # # # creates the Event table
 # mycursor.execute(
@@ -88,7 +88,7 @@ mycursor = db.cursor()
 
 # # # creates the isGoing table
 # mycursor.execute(
-#      "CREATE TABLE isGoing (caseID VARCHAR(6), eventID int, FOREIGN KEY (caseID) REFERENCES Student(caseID), FOREIGN KEY (eventID) REFERENCES Event(eventID))")
+#      "CREATE TABLE isGoing (caseID VARCHAR(6), eventID int, turnedInPaperwork BOOLEAN, FOREIGN KEY (caseID) REFERENCES Student(caseID), FOREIGN KEY (eventID) REFERENCES Event(eventID))")
 
 # # # creates the isParticipating table
 # mycursor.execute(
