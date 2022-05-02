@@ -5,31 +5,15 @@ import mysql.connector
 
 db = mysql.connector.connect(
     host="localhost",
-    user="bk",  # the user you set when installing MySQL
-    passwd="PurplePlum2!",  # the password you set when installing MySQL
+    user="temp",  # the user you set when installing MySQL
+    passwd="temp",  # the password you set when installing MySQL
     database="traveldb" # only run this line after running the database creation command below
 )
 mycursor = db.cursor()
 
 def customQueries(command, args):
     c = command.lower()
-    if c == "show":
-        if args.lower() == "students":
-            getStudentInfo()
-            getInput(True)
-        elif args.lower() == 'clubs':
-            getClubInfo()
-            getInput(True)
-        elif args.lower() == 'events':
-            getEventInfo()
-            getInput(True)
-        elif args.lower() == 'cars':
-            getCarInfo()
-            getInput(True)
-        else:
-            print("*Error*: Invalid table selected")
-            getInput(True)
-    elif c == "members":
+    if c == "members":
         membersOf(args)
         getInput(True)
     elif c == "afford":
@@ -39,6 +23,22 @@ def customQueries(command, args):
         print("Exited.")
     elif c == "help":
         main()
+    elif c == "show":
+        if args.lower() == "students":
+            getStudentInfo()
+            getInput(True)
+        elif args.lower() == "clubs":
+            getClubInfo()
+            getInput(True)
+        elif args.lower() == "events":
+            getEventInfo()
+            getInput(True)
+        elif args.lower() == "cars":
+            getCarInfo()
+            getInput(True)
+        else:
+            print("*Error*: Invalid table selected")
+            getInput(True)
     else:
         print("*Error*: Unknown/Unsupported command")
         getInput(True)
@@ -48,7 +48,11 @@ def getStudentInfo():
     try:
         mycursor.execute(operation)
         result = mycursor.fetchall()
-        print(result)
+        print("------------ caseID -- Name -- Year -- Address -- Phone Number -- Email ------------")
+        for row in result:
+            out = str(row)
+            print(out[out.index("(")+1 : out.rindex(")")])
+        print("------------------------------------------------------------------------------------")
     except Error as e:
         print("The error '{e}' occured")
 
@@ -57,7 +61,11 @@ def getClubInfo():
     try:
         mycursor.execute(operation)
         result = mycursor.fetchall()
-        print(result)
+        print("------------- clubID -- Name -- Funds -- President ID -- Sponsor Name -------------")
+        for row in result:
+            out = str(row)
+            print(out[out.index("(")+1 : out.rindex(")")])
+        print("-----------------------------------------------------------------------------------")
     except Error as e:
         print("The error '{e}' occured")
 
@@ -66,7 +74,11 @@ def getEventInfo():
     try:
         mycursor.execute(operation)
         result = mycursor.fetchall()
-        print(result)
+        print("--------- eventID -- Address -- Start Date -- End Date -- Capacity -- Cost ---------")
+        for row in result:
+            out = str(row)
+            print(out[out.index("(")+1 : out.rindex(")")])
+        print("------------------------------------------------------------------------------------")
     except Error as e:
         print("The error '{e}' occured")
 
@@ -75,7 +87,11 @@ def getCarInfo():
     try:
         mycursor.execute(operation)
         result = mycursor.fetchall()
-        print(result)
+        print("---------------- Plate No. -- Make -- Model -- Capacity -- eventID ----------------")
+        for row in result:
+            out = str(row)
+            print(out[out.index("'")+1 : out.rindex("'")])
+        print("-----------------------------------------------------------------------------------")
     except Error as e:
         print("The error '{e}' occured")
 
@@ -90,7 +106,11 @@ def affordEvent(event):
             if "('{}',)".format(event) == str(currentEvent):
                 mycursor.execute(operation)
                 result = mycursor.fetchall()
-                print(result)
+                print("---------------------------- Club Name ------------------------------")
+                for row in result:
+                    out = str(row)
+                    print(out[out.index("'")+1 : out.rindex("'")])
+                print("---------------------------------------------------------------------")
                 foundEvent = True
         if not foundEvent:
             print("*Error*: Bad event name")
@@ -108,7 +128,11 @@ def membersOf(club):
             if "('{}',)".format(club) == str(currentClub):
                 mycursor.execute(operation)
                 result = mycursor.fetchall()
-                print(result)
+                print("------------------------------- Name ---------------------------------")
+                for row in result:
+                    out = str(row)
+                    print(out[out.index("'")+1 : out.rindex("'")])
+                print("----------------------------------------------------------------------")
                 foundClub = True
         if not foundClub:
             print("*Error*: Bad club name")
